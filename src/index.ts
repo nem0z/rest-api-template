@@ -1,12 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 
-import { config } from './config';
+import dotenv from 'dotenv';
 
 import { dater } from './middlewares/example'
 import AuthController from './controllers/auth';
 
 const app = express();
+
+// load .env api_port
+dotenv.config();
+const API_PORT = process.env.API_PORT;
 
 // must have middlewares
 app.use(cors());
@@ -24,6 +28,6 @@ app.get('/', (req, res) => {
 app.use('/auth', AuthController);
 
 // start server
-app.listen(config.API_PORT, () => {
-    console.log(`Server started on port ${config.API_PORT}`);
+app.listen(API_PORT, () => {
+    console.log(`Server started on port ${API_PORT}`);
 });
