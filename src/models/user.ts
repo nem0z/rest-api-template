@@ -1,8 +1,7 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { DB } from '../db';
 
-const sequelize = new Sequelize('sqlite::memory:');
-
-const User = sequelize.define('User', {
+const User = DB.define('User', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
