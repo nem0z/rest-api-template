@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.13-alpine3.17
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://myuser:mypassword@db:5432/mydatabase
+    depends_on:
+      - db
+volumes:
+  db-data:
