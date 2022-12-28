@@ -13,7 +13,7 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - DATABASE_URL=postgres://myuser:mypassword@db:5432/mydatabase
     depends_on:
