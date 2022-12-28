@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import dotenv from 'dotenv';
 
-import { dater } from './middlewares/example'
+import { dater } from './middlewares/user'
 import AuthController from './controllers/auth';
 
 const app = express();
